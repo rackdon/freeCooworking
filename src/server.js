@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
 })
 
 // find all express route files
-var routes = glob.sync('src/{dao,socket,routes}/*.js')
+var routes = glob.sync('src/{dao,controllers}/*.js')
 
 function addToServer (path) {
   require(path)(app)
