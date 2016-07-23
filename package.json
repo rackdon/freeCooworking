@@ -1,0 +1,19 @@
+{
+  "name": "free_cooworking",
+  "version": "1.0.0",
+  "description": "A service that allows you to share free spaces of your cooworking with other people",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rackdon/freeCooworking.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rackdon/freeCooworking/issues"
+  },
+  "homepage": "https://github.com/rackdon/freeCooworking#readme"
+}
