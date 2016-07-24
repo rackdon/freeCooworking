@@ -11,17 +11,39 @@ freeWorkingApp.factory('Api', function($http) {
     })
   };
 
+  api.getSpace = function(id) {
+     return $http.get(endpoint + '/spaces/' + id)
+    .catch(function(err) {
+      console.dir(err)
+    })
+  };
+
   return api;
 });
 
-freeWorkingApp.controller('SearchController', function($scope, Api) {
+freeWorkingApp.controller('SearchController', function($scope, $location, Api) {
   $scope.results = [];
+    var loc = $location.$$absUrl;
+    console.dir(loc);
   $scope.list = function () {
     return Api.getSpaces()
       .then(function(spaces) {
         $scope.results = spaces.data
         return
       })
+  }
+
+  $scope.getSpace = function() {
+    console.dir('asdasd' + loc);
+    var id = loc.substr(loc.indexOf('=')+1);
+    console.dir(id);
+    return Api.getSpace(id)
+    .then(function(space){
+        console.dir(space);
+        $scope.results = [];
+        $scope.results.push(space.data);
+        return;
+    });
   }
 
   $scope.search = function() {
@@ -37,5 +59,10 @@ freeWorkingApp.controller('SearchController', function($scope, Api) {
         console.dir(err);
       });
   };
-  $scope.list()
+  if (loc.indexOf('space-file') > -1) {
+    $scope.getSpace();
+  } else {
+    console.log(11111);
+    $scope.list();
+  } 
 });
