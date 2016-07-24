@@ -10,7 +10,7 @@ var spaceSchema = new Schema({
   phone: Number,
   email: String,
   freePlaces: Number,
-  schedules: Date,
+  schedules: String,
   services: {
     pets: Boolean,
     wifi: Boolean,

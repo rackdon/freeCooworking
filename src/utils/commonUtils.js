@@ -1,8 +1,14 @@
 var _ = require('lodash')
 
 exports.isValidSpaceObject = function(space) {
-  var expected = ['name', 'adress', 'city', 'pictures', 'description', 'phone', 'email', 'schedules']
-  return _.hasIn(space, expected)
+  var valid = true
+  var expected = ['name', 'adress', 'city', 'pictures', 'description', 'phone', 'email']
+  expected.forEach(function(value) {
+  if ( !_.hasIn(space, value)) {
+    valid = false
+  }
+  }) 
+  return valid
 }
 
 exports.getSpaceObject = function(data) {
