@@ -1,7 +1,7 @@
 var freeWorkingApp = angular.module('freeWorkingApp', []);
 
 freeWorkingApp.factory('Api', function($http) {
-  var endpoint = 'http://localhost:8082'
+  var endpoint = 'http://192.168.1.134:8082'
   var api = {};
 
   api.getSpaces = function() {
