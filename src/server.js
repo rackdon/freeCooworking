@@ -3,9 +3,11 @@ var http = require('http').Server(app)
 var bodyParser = require('body-parser')
 var glob = require('glob')
 var log = require('./log/log').getLog('SERVER')
+var cors = require('cors');
 
 // parse application/json
 app.use(bodyParser.json())
+app.use(cors());
 
 // Routes initialization
 app.get('/', function (req, res) {

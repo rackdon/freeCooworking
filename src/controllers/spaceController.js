@@ -7,11 +7,12 @@ var log = require('../log/log').getLog('CONTROLLERS')
 module.exports = function setup (app) {
 
   app.get('/spaces', function (req, res) {
+      var query = req.query || {}
     log.info('GET /spaces?' + JSON.stringify(req.query))
       //var query = queryBuilder.getQuery(req.query)
-      var query = {}
     spacesHandler.getSpaces(query)
       .then(function (spaces) {
+        log.info(spaces)
         return res.status(200).json(spaces)
       })
     .catch(function (err) {

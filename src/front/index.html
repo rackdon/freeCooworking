@@ -59,7 +59,9 @@
         </div>
 	<div class="row">
 		<div class="col-md-12">
-			<span ng-repeat="space in results track by $index">{{space.name}}</span>
+      <span ng-repeat="space in results track by $index">{{space.name}} -
+        {{space.place}} - {{space.description}} - {{space.phone}} -
+        {{space.email}} - {{space.pictures}}</span>
 		</div>
 	</div>
 </div>

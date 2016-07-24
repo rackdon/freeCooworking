@@ -3,7 +3,8 @@ var Schema = mongoose.Schema
 
 var spaceSchema = new Schema({
   name: String,
-  place: String,
+  adress: String,
+  city: String,
   pictures: [String],
   description: String,
   phone: Number,

@@ -1,23 +1,28 @@
 var freeWorkingApp = angular.module('freeWorkingApp', []);
 
-freeWorkingApp.factory('SearchSpaces', function($http) {
+freeWorkingApp.factory('Api', function($http) {
+  var endpoint = 'http://localhost:8082'
   var api = {};
 
-  api.searchByFields = function(fields, values) {
-    // return $http.get("http://192.168.1.103:8080/todo-rest/rest/play/flaixfm");
-    return Promise.resolve()
-      .then(function() {
-        return {
-          name: 'bla bla bla'
-        };
-      });
+  api.getSpaces = function() {
+     return $http.get(endpoint + '/spaces')
+    .catch(function(err) {
+      console.dir(err)
+    })
   };
 
   return api;
 });
 
-freeWorkingApp.controller('SearchController', function($scope, SearchSpaces) {
+freeWorkingApp.controller('SearchController', function($scope, Api) {
   $scope.results = [];
+  $scope.list = function () {
+    return Api.getSpaces()
+      .then(function(spaces) {
+        $scope.results = spaces.data
+        return
+      })
+  }
 
   $scope.search = function() {
     return SearchSpaces
@@ -32,4 +37,5 @@ freeWorkingApp.controller('SearchController', function($scope, SearchSpaces) {
         console.dir(err);
       });
   };
+  $scope.list()
 });

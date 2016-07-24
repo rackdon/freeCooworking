@@ -1,14 +1,15 @@
 var _ = require('lodash')
 
 exports.isValidSpaceObject = function(space) {
-  var expected = ['name', 'place', 'pictures', 'description', 'phone', 'email', 'schedules']
+  var expected = ['name', 'adress', 'city', 'pictures', 'description', 'phone', 'email', 'schedules']
   return _.hasIn(space, expected)
 }
 
 exports.getSpaceObject = function(data) {
   return {
       name: data.name,
-      place: data.place,
+      adress: data.adress,
+      city: data.city,
       pictures: data.pictures,
       description: data.description,
       phone: data.phone,
@@ -28,7 +29,8 @@ exports.getSpaceObject = function(data) {
 exports.updateSpaceObject = function(newData, oldData) {
   return {
       name:  newData.name || oldData.name,
-      place: newData.place || oldData.place,
+      adress: newData.adress || oldData.adress,
+      city: newData.city || oldData.city,
       pictures: newData.pictures || oldData.pictures,
       description: newData.description || oldData.description,
       phone: newData.phone || oldData.phone,
